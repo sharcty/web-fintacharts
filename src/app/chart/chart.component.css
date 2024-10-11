@@ -1,0 +1,20 @@
+.chart-component {
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.chart-component div {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#chart {
+    width: 100%;
+    height: 40vh;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
