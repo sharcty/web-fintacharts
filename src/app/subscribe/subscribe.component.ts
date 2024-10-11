@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SubscriptionService } from '../services/subscription.service';
 @Component({
   selector: 'app-subscribe',
   standalone: true,
@@ -13,7 +14,7 @@ export class SubscribeComponent {
   instruments: { id: string, value: string }[] = [];
   selectedInstrument: any;
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService, private subscriptionService: SubscriptionService) {
     this.getData();
   }
 
@@ -33,6 +34,6 @@ export class SubscribeComponent {
   }
 
   subscribe() {
-    console.log(this.selectedInstrument);
+    this.subscriptionService.setSelectedInstrument(this.selectedInstrument);
   }
 }
