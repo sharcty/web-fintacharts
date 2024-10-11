@@ -1,7 +1,8 @@
 <div class="subscribe-component">
-    <select class="dropdown">
-        <option value="Option" selected>BTC</option>
-        <option value="Option1">USD</option>
+    <select class="dropdown" [(ngModel)] ="this.selectedInstrument">
+        <option *ngFor="let instrument of instruments" [value]="instrument.id">
+            {{ instrument.value }}
+        </option>
     </select>
-    <button>Subscribe</button>
+    <button (click)="subscribe()">Subscribe</button>
 </div>
