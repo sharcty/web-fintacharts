@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SubscriptionService } from '../services/subscription.service';
 import { DataService } from '../services/data.service';
+import ApexCharts from 'apexcharts';
 
 @Component({
   selector: 'app-chart',
@@ -12,6 +13,7 @@ import { DataService } from '../services/data.service';
 export class ChartComponent {
   selectedInstrumentID: string | undefined;
   instrumentData: any;
+  chart: ApexCharts|undefined;
 
   constructor(private subscriptionService: SubscriptionService, private data:DataService) {}
 
@@ -19,13 +21,48 @@ export class ChartComponent {
     this.subscriptionService.selectedInstrument$.subscribe(id => {
       this.selectedInstrumentID = id;
       this.data.getHistoricalData(id).subscribe(
-        res => {
-          console.log('HTTP response', res);
-          this.instrumentData = res;
+        res => {  
+            this.instrumentData = res.data.map((dataPoint: any) => ({
+              x: new Date(dataPoint.t),
+              y: [dataPoint.o, dataPoint.h, dataPoint.l, dataPoint.c]
+            }));
+  
+            if (!this.chart) {
+              this.drawChart();
+            } else {
+              this.chart.updateSeries([{
+                data: this.instrumentData
+              }]);
+            }
         },
         err => console.log('HTTP Error', err),
-        () => console.log('HTTP request completed.')
+        () => {
+          console.log('HTTP request completed.');
+        }
       );
     });
   }
+  
+  drawChart(){
+    var options = {
+      chart: {
+        type: 'candlestick'
+      },
+      series: [{
+        data: this.instrumentData
+      }],
+      xaxis: {
+        type: 'datetime'
+      },
+      yaxis: {
+        tooltip: {
+          enabled: true
+        }
+      }
+    };
+  
+    this.chart = new ApexCharts(document.querySelector("#chart"), options);
+    this.chart.render();
+  }
+  
 }
