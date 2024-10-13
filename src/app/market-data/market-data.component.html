@@ -3,15 +3,15 @@
   <div class="market-details">
     <div class="market-detail">
       <span class="label">Symbol:</span>
-      <span class="value">AAPL</span>
+      <span class="value">{{this.selectedInstrumentID}}</span>
     </div>
     <div class="market-detail">
       <span class="label">Price:</span>
-      <span class="value">$150.00</span>
+      <span class="value">{{this.marketData.last.price}}</span>
     </div>
     <div class="market-detail">
       <span class="label">Time:</span>
-      <span class="value">10:30 AM</span>
+      <span class="value">{{this.marketData.last.timestamp | date:'shortTime'}}</span>
     </div>
   </div>
 </div>

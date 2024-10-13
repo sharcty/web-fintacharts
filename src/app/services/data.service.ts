@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
@@ -8,7 +7,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = environment.API_URL;
+  private apiUrl = 'https://platform.fintacharts.com';
   private headers:HttpHeaders;
 
   constructor(private http: HttpClient, private authService: AuthService) {
