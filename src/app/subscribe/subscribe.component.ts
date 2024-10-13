@@ -14,19 +14,19 @@ export class SubscribeComponent {
   instruments: { id: string, value: string }[] = [];
   selectedInstrument: any;
 
-  constructor(private data: DataService, private subscriptionService: SubscriptionService) {
+  constructor(private data: DataService, private subscriptionService: SubscriptionService) {}
+
+  ngOnInit() {
     this.getData();
   }
 
   getData() {
     this.data.getInstruments().subscribe(
       res => {
-        console.log('HTTP response', res);
         this.instruments = res.data.map((item: any) => ({
           id: item.id,
           value: item.symbol
         }));
-        console.log('Instruments:', this.instruments);
       },
       err => console.log('HTTP Error', err),
       () => console.log('HTTP request completed.')

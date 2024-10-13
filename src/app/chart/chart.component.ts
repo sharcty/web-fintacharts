@@ -56,8 +56,8 @@ export class ChartComponent {
         labels: {
           formatter: function(value: number) {
             const date = new Date(value);
-            const hours = date.getHours().toString().padStart(2, '0'); // Pad single digit with leading zero
-            const minutes = date.getMinutes().toString().padStart(2, '0'); // Pad single digit with leading zero
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
             return `${hours}:${minutes}`;
           }
         }
