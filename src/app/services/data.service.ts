@@ -12,7 +12,9 @@ export class DataService {
 
   constructor(private http: HttpClient, private authService: AuthService) {
     this.headers = new HttpHeaders({
-      'Authorization': `Bearer ${authService.getApiKey()}`
+      'Authorization': `Bearer ${authService.getApiKey()}`,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     });
 
   }

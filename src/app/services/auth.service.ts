@@ -20,8 +20,9 @@ export class AuthService {
     .set('grant_type', 'password');
 
     return this.http.post<any>(url, data.toString(), {
-      headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
-    }).pipe(
+      headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'})
+      })
+    .pipe(
       map(response => {
         this.apiKey = response.access_token;
         return this.apiKey;

@@ -16,6 +16,8 @@
             "outputPath": "dist/web-fintacharts",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/web-fintacharts/",
+            "deployUrl": "/web-fintacharts/",
             "polyfills": [
               "zone.js"
             ],
