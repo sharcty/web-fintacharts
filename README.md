@@ -8,13 +8,13 @@ Angular project for working with finance API.
 Clone the project
 
 ```bash
-  git clone https://github.com/sharcty/geotask.git
+  git clone https://github.com/sharcty/web-fintacharts.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd geotask
+  cd web-fintacharts
 ```
 
 Install dependencies
