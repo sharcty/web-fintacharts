@@ -7,11 +7,11 @@
     </div>
     <div class="market-detail">
       <span class="label">Price:</span>
-      <span class="value">{{this.marketData.last.price}}</span>
+      <span class="value" *ngIf="isPriceReady()">{{this.marketData.last.price}}</span>
     </div>
     <div class="market-detail">
       <span class="label">Time:</span>
-      <span class="value">{{this.marketData.last.timestamp | date:'shortTime'}}</span>
+      <span class="value"  *ngIf="isPriceReady()">{{this.marketData.last.timestamp | date:'shortTime'}}</span>
     </div>
   </div>
 </div>

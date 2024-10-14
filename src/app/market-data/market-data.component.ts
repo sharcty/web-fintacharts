@@ -66,4 +66,8 @@ export class MarketDataComponent implements OnInit, OnDestroy {
     console.log('Sending subscription message:', subscriptionMessage);
     this.websocketService.sendMessage(subscriptionMessage);
   }
+
+  isPriceReady(){
+    return this.marketData && this.marketData.last && this.marketData.last.price;
+  }
 }
