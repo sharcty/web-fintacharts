@@ -12,7 +12,7 @@ import { SubscriptionService } from '../services/subscription.service';
 })
 export class SubscribeComponent {
   instruments: { id: string, value: string }[] = [];
-  selectedInstrument: any;
+  selectedInstrument: { id: string, value: string } = { id: 'test', value: '' };
 
   constructor(private data: DataService, private subscriptionService: SubscriptionService) {}
 
@@ -27,6 +27,10 @@ export class SubscribeComponent {
           id: item.id,
           value: item.symbol
         }));
+        if(this.selectedInstrument.id=='test'){
+          this.selectedInstrument = this.instruments[0];
+          this.subscribe();
+        }
       },
       err => console.log('HTTP Error', err),
       () => console.log('HTTP request completed.')
@@ -34,6 +38,7 @@ export class SubscribeComponent {
   }
 
   subscribe() {
-    this.subscriptionService.setSelectedInstrument(this.selectedInstrument);
+    console.log(this.selectedInstrument.id + this.selectedInstrument.value)
+    this.subscriptionService.setSelectedInstrument(this.selectedInstrument.id, this.selectedInstrument.value);
   }
 }

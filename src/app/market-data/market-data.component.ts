@@ -16,6 +16,7 @@ export class MarketDataComponent implements OnInit, OnDestroy {
   public marketData: any;
   public errorMessage: string | null = null;
   public selectedInstrumentID: string | undefined;
+  public selectedInstrumentValue: string | undefined;
 
   constructor(
     private websocketService: WebsocketService,
@@ -23,10 +24,16 @@ export class MarketDataComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscriptionService.selectedInstrument$.subscribe(id => {
+    this.subscriptionService.selectedInstrumentId$.subscribe(id => {
       this.selectedInstrumentID = id;
       if (this.selectedInstrumentID) {
         this.sendSubscriptionMessage(this.selectedInstrumentID);
+      }
+    });
+
+    this.subscriptionService.selectedInstrumentValue$.subscribe(value => {
+      if (value) {
+        this.selectedInstrumentValue = value;
       }
     });
 

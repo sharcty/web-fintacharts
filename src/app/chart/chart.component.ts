@@ -18,7 +18,7 @@ export class ChartComponent {
   constructor(private subscriptionService: SubscriptionService, private data:DataService) {}
 
   ngOnInit() {
-    this.subscriptionService.selectedInstrument$.subscribe(id => {
+    this.subscriptionService.selectedInstrumentId$.subscribe(id => {
       this.selectedInstrumentID = id;
       this.data.getHistoricalData(id).subscribe(
         res => {  

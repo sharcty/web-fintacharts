@@ -1,6 +1,6 @@
 <div class="subscribe-component">
     <select class="dropdown" [(ngModel)] ="this.selectedInstrument">
-        <option *ngFor="let instrument of instruments" [value]="instrument.id">
+        <option *ngFor="let instrument of instruments" [ngValue]="instrument">
             {{ instrument.value }}
         </option>
     </select>
